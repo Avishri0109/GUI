@@ -1,0 +1,26 @@
+import time
+from tkinter import *
+import pyautogui
+
+def ss():
+    name = int(round(time.time() * 1000))
+    name = 'Image' + '{}.png'.format(name)
+    time.sleep(5)
+    img=pyautogui.screenshot(name)
+    img.show()
+    img.deiconify()
+
+def delay():
+    root.withdraw()
+    root.after(1000,ss)
+root=Tk()
+root.title("SCREENSHOT")
+root.geometry('900x900')
+root.resizable(0,0)
+root['bg']='black'
+b1=Button(root,text="Take screenshot",font=("arial",10,'bold'),height=2,width=18,fg="red",bg="black",command=delay).pack()
+
+b2=Button(root,text="Quit",font=("arial",10,"bold"),height=2,width=18,fg="red",bg="black",command=quit).pack()
+
+
+root.mainloop()
